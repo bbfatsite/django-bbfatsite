@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset='utf-8' />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-title" content="九妹图社" />
+<title>九妹图社</title>
+<link href="http://m.99mm.me/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+   <ul class="piclist" id="piclist">
+   {% for image in images %}
+   <li>
+   <h2>
+   <a href="#">{{ image.title }}</a>
+   </h2>
+   <div class="pic">
+	   <a href="{% url 'detail' %}?key={{ image.id }}">
+	   <img src="{% static image.path %}" alt="{{ image.title }}" />
+   </a>
+   </div>
+   <div class="info"><span>{{ image.update_at }} {{ by }}</span><span class="like">浏览(100+)</span></div>
+   </li>
+   {% endfor %}
+   </ul>
+
+   <div class="page">
+     <ul>
+     
+     <li class="pre">
+     {% if images.has_previous %}
+     <a href="?page={{ images.previous_page_number }}">上一页</a>
+     {% else %}
+     <i>上一页</i>
+     {% endif %}
+     </li>
+     
+     <li>第{{ images.number }}/{{ images.paginator.num_pages }}页</li>
+     
+     <li class="next">
+     {% if images.has_next %}
+     <a href="?page={{ images.next_page_number }}">下一页</a>
+     {% else %}
+     <i>下一页</i>
+     {% endif %}
+     </li>
+     
+     </ul>
+   </div>
+
+ </body>
+</html>
