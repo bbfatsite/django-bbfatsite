@@ -1,0 +1,17 @@
+m3.bbfat.top:443/static {
+    root /home/pi/static
+    tls /etc/caddy/cert/m3.pem /etc/caddy/cert/m3.key
+}
+
+m3.bbfat.top:443/css {
+    root /var/www/css
+    tls /etc/caddy/cert/m3.pem /etc/caddy/cert/m3.key
+}
+
+m3.bbfat.top:443 {
+    root /home/pi
+    tls /etc/caddy/cert/m3.pem /etc/caddy/cert/m3.key
+    proxy /girls 127.0.0.1:8000 {
+        transparent
+    }
+}
