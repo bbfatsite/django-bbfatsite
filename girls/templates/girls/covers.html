@@ -25,7 +25,7 @@
 	   <img src="{% static image.path %}" alt="{{ image.title }}" />
    </a>
    </div>
-   <div class="info"><span>{{ image.update_at }} {{ by }}</span><span class="like">浏览(100+)</span></div>
+   <div class="info"><span>{{ image.update_at }}</span><span class="like">来自({{ by }})</span></div>
    </li>
    {% endfor %}
    </ul>
