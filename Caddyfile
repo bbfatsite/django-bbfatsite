@@ -14,4 +14,7 @@ m3.bbfat.top:443 {
     proxy /girls 127.0.0.1:8000 {
         transparent
     }
+    proxy /admin 127.0.0.1:8000 {
+        transparent
+    }
 }
